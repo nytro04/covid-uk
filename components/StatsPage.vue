@@ -4,14 +4,8 @@
       <!-- <StatsCardBig :new-cases="newCases" /> -->
       <StatsCardBig />
       <div class="block space-y-12">
-        <StatsCardSmall
-          type="prev"
-          card-text="Increase from previous day"
-        />
-        <StatsCardSmall
-          type="average"
-          card-text="Average of last 7 days"
-        />
+        <StatsCardSmall type="prev" />
+        <StatsCardSmall type="average" />
       </div>
     </div>
   </div>

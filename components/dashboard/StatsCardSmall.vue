@@ -13,15 +13,16 @@
         <h2 v-if="type === 'average'" class="font-bold">{{fetchAvg}}</h2>
         <p
           v-if="type === 'prev'"
-          class="text-xl text-tertiary-light font-semibold"
+          class="text-xl text-tertiary-light font-semibold -mt-4"
         >
-          {{cardText}}
+          <span v-if="getNeg === '-'">Decrease from previous day</span>
+          <span v-else>Increase from previous day</span>
         </p>
         <p
           v-if="type === 'average'"
-          class="text-xl text-tertiary-light font-semibold"
+          class="text-xl text-tertiary-light font-semibold -mt-4"
         >
-          {{cardText}}
+          Average of last 7 days
         </p>
       </div>
     </div>
@@ -51,14 +52,8 @@ FallingSvg
       type: String,
       default: ""
     },
-    increase: {
-      type: String,
-      default: ""
-    },
-    cardText: {
-      type: String,
-      default: ""
-    }
+
+
   },
       computed: {
    ...mapGetters({
