@@ -53,7 +53,6 @@ FallingSvg
       default: ""
     },
 
-
   },
       computed: {
    ...mapGetters({

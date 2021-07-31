@@ -6,7 +6,9 @@
         Use this tool to find out the latest stats for Coronavirus in the UK
       </h4>
     </div>
-    <ArrowDownSvg class="self-end mb-10" />
+    <a href="#stats-page" class="self-end mb-10">
+      <ArrowDownSvg class="" />
+    </a>
   </div>
 </template>
 

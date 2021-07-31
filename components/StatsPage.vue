@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mar-top mar-bottom">
+  <div id="stats-page" class="container mx-auto mar-top mar-bottom">
     <div class=" flex justify-between items-center ">
       <!-- <StatsCardBig :new-cases="newCases" /> -->
       <StatsCardBig />
