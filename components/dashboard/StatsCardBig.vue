@@ -9,7 +9,8 @@
         </h4>
       </div>
       <div class="w-2/3">
-        <h2 class="font-bold">26,688</h2>
+        <h2 class="font-bold">{{newCases.newCases}}</h2>
+        <h2 class="font-bold"></h2>
         <p class="text-3xl -mt-8 text-tertiary-light font-semibold">
           New Cases Yesterday
         </p>
@@ -19,11 +20,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 import AlertSvg from '~/assets/svgs/alert.svg?inline'
 
 export default {
 components: {
    AlertSvg
+ },
+   computed: {
+   ...mapGetters({
+      newCases: 'cases/fetchCase'
+   })
  }
 }
 </script>

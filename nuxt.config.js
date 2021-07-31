@@ -23,7 +23,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-  ],
+    // {src: '~/plugins/chart.js', mode: 'client'}
+],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   // components: true,
@@ -47,7 +48,11 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.API_ENDPOINT,
+    // proxyHeaders: false,
+    // credentials: false
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -58,5 +63,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+   env: {
+    baseUrl: process.env.API_ENDPOINT
   }
 }

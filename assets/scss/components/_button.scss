@@ -1,0 +1,29 @@
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.4rem 1.2rem;
+    display: inline-block;
+    // height: 2.5rem;
+    width: 12.5rem;
+    transition: all 0.2s;
+  }
+
+  &__white {
+    border: 2px solid #333;
+    color: #333;
+    background-color: #fafafa;
+
+    &:hover {
+      color: #fafafa;
+      background-color: #333;
+    }
+  }
+}

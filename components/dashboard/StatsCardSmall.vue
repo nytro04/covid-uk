@@ -2,12 +2,26 @@
   <div class="card ">
     <div class="flex items-center justify-between ">
       <div class="w-5/24 mt-10 flex justify-center items-center mb-10">
-        <component :is="svg"></component>
+        <span v-if="type === 'prev'">
+          <FallingSvg v-if="getNeg === '-'" />
+          <RisingSvg v-else />
+        </span>
+        <CalenderSvg v-if="type === 'average'" />
       </div>
       <div class="w-18/24 pt-8 pb-14 pl-16">
-        <h2 class="font-bold">{{increase}}</h2>
-        <p class="text-xl text-tertiary-light font-semibold">
-          {{average}}
+        <h2 v-if="type === 'prev'" class="font-bold">{{fetchPer}}%</h2>
+        <h2 v-if="type === 'average'" class="font-bold">{{fetchAvg}}</h2>
+        <p
+          v-if="type === 'prev'"
+          class="text-xl text-tertiary-light font-semibold"
+        >
+          {{cardText}}
+        </p>
+        <p
+          v-if="type === 'average'"
+          class="text-xl text-tertiary-light font-semibold"
+        >
+          {{cardText}}
         </p>
       </div>
     </div>
@@ -15,26 +29,54 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+import CalenderSvg from '~/assets/svgs/calendar.svg?inline'
+import RisingSvg from '~/assets/svgs/trending-up.svg?inline'
+import FallingSvg from '~/assets/svgs/trending-down.svg?inline'
+
 
 
 export default {
-components: {
 
+
+components: {
+CalenderSvg,
+RisingSvg,
+FallingSvg
  },
+
   props: {
-    svg: {
-      type: Object,
-      default: () => ({})
+
+    type: {
+      type: String,
+      default: ""
     },
     increase: {
       type: String,
       default: ""
     },
-    average: {
+    cardText: {
       type: String,
       default: ""
     }
-  }
+  },
+      computed: {
+   ...mapGetters({
+      fetchPer: 'cases/fetchPer',
+      fetchAvg: 'cases/fetchAvg'
+   }),
+
+     getNeg() {
+      const str =
+        '' + this.fetchPer
+    const char = str[0]
+    return char
+
+    },
+ },
+ methods: {
+
+ },
 }
 </script>
 

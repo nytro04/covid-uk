@@ -1,17 +1,16 @@
 <template>
   <div class="container mx-auto mar-top mar-bottom">
     <div class=" flex justify-between items-center ">
+      <!-- <StatsCardBig :new-cases="newCases" /> -->
       <StatsCardBig />
       <div class="block space-y-12">
         <StatsCardSmall
-          :svg="svg.rising"
-          increase="+300%"
-          average="Increase from previous day"
+          type="prev"
+          card-text="Increase from previous day"
         />
         <StatsCardSmall
-          :svg="svg.calendar"
-          increase="17000"
-          average="Average of last 7 days"
+          type="average"
+          card-text="Average of last 7 days"
         />
       </div>
     </div>
@@ -19,9 +18,9 @@
 </template>
 
 <script>
+// import { mapGetters } from "vuex"
 import CalenderSvg from '~/assets/svgs/calendar.svg?inline'
 import RisingSvg from '~/assets/svgs/trending-up.svg?inline'
-
 
 export default {
 components: {
@@ -32,6 +31,12 @@ components: {
    // eslint-disable-next-line vue/no-unused-components
    CalenderSvg
  },
+    props: {
+    newCases: {
+      type: Number,
+      default: 0
+    }
+  },
 
  data() {
    return {
@@ -42,6 +47,12 @@ components: {
 
    }
  },
+
+ computed: {
+  //  ...mapGetters({
+  //     newCases: 'cases/fetchCase'
+  //  })
+ }
 }
 </script>
 
