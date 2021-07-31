@@ -1,16 +1,16 @@
 <template>
   <div class="card ">
     <div class="flex items-center justify-center text-primary-dark">
-      <div class="w-1/3 mt-10">
+      <div class="w-1/3 mt-8">
         <AlertSvg class="ml-4" />
         <h4 class="text-3xl font-semibold">
           <span class="ml-2">Above</span>
           <span>average</span>
         </h4>
       </div>
-      <div class="2/3">
+      <div class="w-2/3">
         <h2 class="font-bold">26,688</h2>
-        <p class="text-3xl -mt-8 text-black font-semibold">
+        <p class="text-3xl -mt-8 text-tertiary-light font-semibold">
           New Cases Yesterday
         </p>
       </div>
