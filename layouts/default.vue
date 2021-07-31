@@ -1,13 +1,15 @@
 <template>
   <div class="">
-    <Hero />
+    <!-- <div class="container mx-auto sm:px-10"> -->
+    <Nuxt />
   </div>
 </template>
 
 <script>
 export default {
-   components: {
-    Hero: () => import('~/components/HeroPage.vue'),
-   }
+
+
 }
 </script>
+
+<style></style>
