@@ -48,13 +48,16 @@ export default {
 
   @include respond(tab-land) {
     height: 60vh;
+    /* width: 70%; */
   }
   @include respond(tab-port) {
     height: 60vh;
+    /* width: 70%; */
   }
 
   @include respond(phone) {
     height: 60vh;
+    /* width: 70%; */
   }
 
   h1 {

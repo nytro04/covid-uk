@@ -2,7 +2,7 @@
   <div class="card">
     <div class="flex items-center justify-between text-primary-dark">
       <div class="mt-8">
-        <AlertSvg class="-ml-2 md:ml-0 alert" />
+        <AlertSvg class="-ml-2 md:ml-0 icon" />
         <h4 class="text-xl font-semibold md:text-3xl">
           <span>Above</span>
           <br />
@@ -73,7 +73,7 @@ export default {
   }
 }
 
-.alert {
+.icon {
   @include respond(phone) {
     height: 3rem;
   }

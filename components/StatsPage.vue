@@ -1,8 +1,12 @@
 <template>
   <div id="stats-page" class="container mx-auto mar-top mar-bottom">
-    <div class="flex items-center justify-between">
-      <StatsCardBig />
-      <div class="block space-y-12">
+    <div class="block mx-5 md:grid md:grid-cols-12">
+      <div class="col-start-1 col-end-7">
+        <StatsCardBig />
+      </div>
+      <div
+        class="block col-start-8 col-end-13 mt-16 space-y-5  md:space-y-12 md:mt-0"
+      >
         <StatsCardSmall type="prev" />
         <StatsCardSmall type="average" />
       </div>

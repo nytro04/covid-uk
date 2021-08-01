@@ -1,6 +1,8 @@
 <template>
   <div class="container m-auto preventive sm:px-10">
-    <div class="grid-cols-1 gap-10 my-40 text-center md:grid md:grid-cols-3">
+    <div
+      class="grid-cols-1 gap-10 my-24 space-y-16 text-center  md:space-y-0 md:my-48 md:grid md:grid-cols-3"
+    >
       <div class="">
         <h3 class="mb-4 text-2xl font-bold">WASH HANDS</h3>
         <p class="text-lg">
