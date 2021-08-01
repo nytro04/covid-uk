@@ -17,14 +17,6 @@ export const mutations = {
 
   SET_AVG(state, average) {
     state.average = average
-  },
-
-  SET_WEEK_CASES(state, cases) {
-    state.weeklyCases = cases
-  },
-
-  SET_WEEK_DATES(state, dates) {
-    state.weeklyDates = dates
   }
 }
 export const actions = {
@@ -38,14 +30,6 @@ export const actions = {
 
   setAvg({ commit }, average) {
     commit('SET_AVG', average)
-  },
-
-  setWeekCases({ commit }, cases) {
-    commit('SET_WEEK_CASES', cases)
-  },
-
-  setWeekDates({ commit }, dates) {
-    commit('SET_WEEK_DATES', dates)
   }
 }
 export const getters = {
@@ -53,9 +37,5 @@ export const getters = {
 
   fetchPer: (state) => state.casesPer,
 
-  fetchAvg: (state) => state.average,
-
-  fetchWeeklyCases: (state) => state.weeklyCases,
-
-  fetchWeeklyDates: (state) => state.weeklyDates
+  fetchAvg: (state) => state.average
 }

@@ -2,9 +2,21 @@
   <div class="">
     <Hero />
     <StatsPage />
-    <!-- <StatsPage :new-cases="newCases" /> -->
-    <!-- <ChartLine :weekly-cases="weeklyCases" /> -->
-    <ChartLineBase :chart-data="chartData" options="options" :height="200" />
+
+    <div class="py-10 mx-auto mt-32 graph bg-primary-light">
+      <ChartLineBase :chart-data="chartData" options="options" :height="200" />
+      <div class="my-20 text-center">
+        <a
+          href="https://www.gov.uk/coronavirus"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn__white"
+        >
+          view in details
+        </a>
+      </div>
+    </div>
+
     <PreventivePage />
   </div>
 </template>
@@ -15,7 +27,6 @@ export default {
   components: {
     Hero: () => import('~/components/HeroPage.vue'),
     StatsPage: () => import('~/components/StatsPage.vue'),
-    // ChartLine: () => import('~/components/ChartLine.vue'),
     ChartLineBase: () => import('~/components/dashboard/ChartLineBase.vue'),
     PreventivePage: () => import('~/components/PreventivePage.vue'),
   },
@@ -27,21 +38,19 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
       },
-      weeklyCases: [],
-      covidResult: [],
-      newCases: {},
-      //  prevCases: {},
-      areaType: 'nation',
-      areaName: 'england',
-      currentPage: 1,
-      structure: {
-        date: 'date',
-        name: 'areaName',
-        cases: {
-          new: 'newCasesByPublishDate',
-          cumulative: 'cumCasesByPublishDate',
-        },
-      },
+
+      // use this to make api url maintable
+      // areaType: 'nation',
+      // areaName: 'england',
+      // currentPage: 1,
+      // structure: {
+      //   date: 'date',
+      //   name: 'areaName',
+      //   cases: {
+      //     new: 'newCasesByPublishDate',
+      //     cumulative: 'cumCasesByPublishDate',
+      //   },
+      // },
     }
   },
 
@@ -54,33 +63,17 @@ export default {
       setNewCases: 'cases/setNewCases',
       setPer: 'cases/setPer',
       setAvg: 'cases/setAvg',
-      setWeekCases: 'cases/setWeekCases',
-      setWeekDates: 'cases/setWeekDates',
     }),
 
     average(arr) {
       return arr.reduce((newVal, oldVal) => newVal + oldVal) / arr.length
     },
     async fetchData() {
-      //  const filters = [`areaType=${this.areaType}`, `areaName=${this.areaName}`]
-      //  const apiParams = {
-      //    filters: filters.join(";"),
-      //    structure: JSON.stringify(this.structure),
-      //    latestBy: "newCasesByPublishDate"
-      //  }
-
       try {
-        //  const res = await this.$axios.$get(`/data?`, {
-        //    params:String(apiParams)
-        //  })
-
-        //  const res = await this.$axios.$get(`/data?filters=areaType=nation;areaName=england&structure={"date":"date","cumCasesByPublishDate":"cumCasesByPublishDate", "newCases":"newCasesByPublishDate"}`)
-
         const res = await this.$axios.$get(
           `/data?filters=areaType=nation;areaName=england&structure={"date":"date","cumCasesByPublishDate":"cumCasesByPublishDate", "newCases":"newCasesByPublishDate"}`
         )
 
-        //  this.covidResult = res.data
         const dayZero = res.data[0]
         const dayOne = res.data[1]
         const dayTwo = res.data[2]

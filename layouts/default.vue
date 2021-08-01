@@ -10,10 +10,9 @@
 
 <script>
 export default {
-
-components: {
-   Footer: () => import('~/components/dashboardLayout/Footer.vue'),
-}
+  components: {
+    Footer: () => import('~/components/mainLayout/Footer.vue'),
+  },
 }
 </script>
 

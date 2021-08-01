@@ -10,11 +10,10 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-       {
+      {
         rel: 'stylesheet',
-        href: 'href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap',
-
-      },
+        href: 'href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap'
+      }
     ]
   },
 
@@ -24,17 +23,14 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     // {src: '~/plugins/chart.js', mode: 'client'}
-],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  // components: true,
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -44,14 +40,12 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
 
-     '@nuxtjs/svg',
+    '@nuxtjs/svg'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.API_ENDPOINT,
-    // proxyHeaders: false,
-    // credentials: false
+    baseURL: process.env.API_ENDPOINT
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -62,10 +56,9 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
 
-   env: {
+  env: {
     baseUrl: process.env.API_ENDPOINT
   }
 }

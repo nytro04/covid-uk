@@ -1,8 +1,8 @@
 <template>
-  <div class="hero flex items-center">
-    <div class=" my-auto text-white ml-64">
-      <h1 class="text-8xl font-bold">COVID UK</h1>
-      <h4 class="mt-5 text-lg ">
+  <div class="flex items-center hero">
+    <div class="my-auto ml-64 text-white">
+      <h1 class="font-bold text-8xl">COVID UK</h1>
+      <h4 class="mt-5 text-lg">
         Use this tool to find out the latest stats for Coronavirus in the UK
       </h4>
     </div>
@@ -15,9 +15,9 @@
 <script>
 import ArrowDownSvg from '~/assets/svgs/arrow.svg?inline'
 export default {
- components: {
-   ArrowDownSvg
- }
+  components: {
+    ArrowDownSvg,
+  },
 }
 </script>
 
@@ -36,7 +36,5 @@ export default {
   .mar-left {
     margin-left: 16.1875rem;
   }
-
-  /* 16.1875 */
 }
 </style>
