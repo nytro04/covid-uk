@@ -22,7 +22,10 @@
         Use this tool to find out the latest stats for Coronavirus in the UK
       </h4>
     </div>
-    <a href="#stats-page" class="col-start-7 row-start-6 mt-8 md:mt-14">
+    <a
+      href="#stats-page"
+      class="col-start-7 row-start-6 mt-8 lg:mt-10 md:mt-12"
+    >
       <ArrowDownSvg class="" />
     </a>
   </div>
@@ -47,7 +50,7 @@ export default {
   background-position: center;
 
   @include respond(tab-land) {
-    height: 60vh;
+    height: 70vh;
     /* width: 70%; */
   }
   @include respond(tab-port) {
