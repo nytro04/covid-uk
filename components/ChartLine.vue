@@ -1,6 +1,6 @@
 <template>
-  <div class="graph bg-primary-light mx-auto">
-    <!-- <ChartLineBase :chart-data="chartData" :height="200"  /> -->
+  <div class="mx-auto graph bg-primary-light">
+    <ChartLineBase :chart-data="chartData" options="options" :height="200" />
     <!-- <ChartLineBase /> -->
 
     <div class="my-20 text-center">
@@ -14,15 +14,58 @@
         view in details
       </a>
     </div>
+
+    {{ fetchWeeklyCases }}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-   components: {
+  components: {
+    ChartLineBase: () => import('~/components/dashboard/ChartLineBase.vue'),
+  },
 
-    // ChartLineBase: () => import('~/components/dashboard/ChartLineBase.js'),
-   }
+  props: {
+    weeklyCases: {
+      type: Array,
+      default: () => [],
+    },
+  },
+
+  data() {
+    return {
+      chartData: {
+        // labels: this.fetchWeeklyDates,
+        labels: [],
+        datasets: [
+          {
+            label: 'Cases per day (last 7 days)',
+            // data: this.fetchWeeklyCases,
+            data: [],
+            borderWidth: 1,
+            backgroundColor: '#FFEFEF',
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      fetchWeeklyCases: 'cases/fetchWeeklyCases',
+      fetchWeeklyDates: 'cases/fetchWeeklyDates',
+    }),
+  },
+
+  created() {
+    // this.chartData = this.$store.getters['cases/fetchWeeklyCases']
+    this.chartData.labels = this.$store.getters['cases/fetchWeeklyDates']
+  },
 }
 </script>
 
