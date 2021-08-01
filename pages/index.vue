@@ -66,6 +66,12 @@ export default {
     }
   },
 
+  head() {
+    return {
+      title: 'Covid-UK | Home Page',
+    }
+  },
+
   computed: {
     ...mapGetters({
       fetchLoading: 'cases/fetchLoading',
