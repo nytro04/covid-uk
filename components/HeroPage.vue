@@ -45,8 +45,9 @@ export default {
 .hero {
   background-image: url('~/assets/img/covid-hero.png');
   height: 90vh;
-  width: 100%;
+  /* width: 100%; */
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
 
   @include respond(tab-land) {
