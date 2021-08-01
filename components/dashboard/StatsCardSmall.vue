@@ -1,14 +1,14 @@
 <template>
   <div class="card">
     <div class="flex items-center justify-between">
-      <div class="flex items-center justify-center mt-10 mb-10 w-5/24">
+      <div class="flex items-center justify-center mt-10 mb-10">
         <span v-if="type === 'prev'">
-          <FallingSvg v-if="getNeg === '-'" />
-          <RisingSvg v-else />
+          <FallingSvg v-if="getNeg === '-'" class="icon" />
+          <RisingSvg v-else class="icon" />
         </span>
-        <CalenderSvg v-if="type === 'average'" />
+        <CalenderSvg v-if="type === 'average'" class="icon" />
       </div>
-      <div class="pt-8 pl-16 w-18/24 pb-14">
+      <div class="pt-8 ml-4 md:pl-10 pb-14">
         <div>
           <div v-if="fetchLoading" class="mb-5 text-center">
             <LoadingSvg />
@@ -20,14 +20,14 @@
         </div>
         <p
           v-if="type === 'prev'"
-          class="-mt-4 text-xl font-semibold text-tertiary-light"
+          class="text-base font-semibold md:text-xl text-tertiary-light"
         >
           <span v-if="getNeg === '-'">Decrease from previous day</span>
           <span v-else>Increase from previous day</span>
         </p>
         <p
           v-if="type === 'average'"
-          class="-mt-4 text-xl font-semibold text-tertiary-light"
+          class="text-base font-semibold md:text-xl text-tertiary-light"
         >
           Average of last 7 days
         </p>
@@ -74,14 +74,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './assets/scss/abstracts/_mixins.scss';
 .card {
   height: 10rem;
-  width: 35.625rem;
+  /* width: 35.625rem; */
   border-radius: 8px;
   @apply bg-primary-light shadow-md flex justify-center items-center;
 
   h2 {
-    font-size: 4.375rem;
+    font-size: 3.5rem;
+
+    @include respond(phone) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.icon {
+  @include respond(phone) {
+    height: 3rem;
   }
 }
 </style>
