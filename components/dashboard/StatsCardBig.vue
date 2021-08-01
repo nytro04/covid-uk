@@ -1,5 +1,5 @@
 <template>
-  <div class="card ">
+  <div class="card">
     <div class="flex items-center justify-center text-primary-dark">
       <div class="w-1/3 mt-8">
         <AlertSvg class="ml-4" />
@@ -9,9 +9,14 @@
         </h4>
       </div>
       <div class="w-2/3">
-        <h2 class="font-bold">{{newCases.newCases}}</h2>
+        <div>
+          <div v-if="fetchLoading" class="py-10 mb-5 text-center">
+            <LoadingSvg />
+          </div>
+          <h2 class="font-bold">{{ newCases.newCases }}</h2>
+        </div>
         <h2 class="font-bold"></h2>
-        <p class="text-3xl -mt-8 text-tertiary-light font-semibold">
+        <p class="-mt-8 text-3xl font-semibold text-tertiary-light">
           New Cases Yesterday
         </p>
       </div>
@@ -20,18 +25,20 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters } from 'vuex'
 import AlertSvg from '~/assets/svgs/alert.svg?inline'
-
+import LoadingSvg from '~/assets/svgs/loading.svg?inline'
 export default {
-components: {
-   AlertSvg
- },
-   computed: {
-   ...mapGetters({
-      newCases: 'cases/fetchCase'
-   })
- }
+  components: {
+    AlertSvg,
+    LoadingSvg,
+  },
+  computed: {
+    ...mapGetters({
+      newCases: 'cases/fetchCase',
+      fetchLoading: 'cases/fetchLoading',
+    }),
+  },
 }
 </script>
 

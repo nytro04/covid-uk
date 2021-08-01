@@ -9,8 +9,15 @@
         <CalenderSvg v-if="type === 'average'" />
       </div>
       <div class="pt-8 pl-16 w-18/24 pb-14">
-        <h2 v-if="type === 'prev'" class="font-bold">{{ fetchPer }}%</h2>
-        <h2 v-if="type === 'average'" class="font-bold">{{ fetchAvg }}</h2>
+        <div>
+          <div v-if="fetchLoading" class="mb-5 text-center">
+            <LoadingSvg />
+          </div>
+          <div v-else>
+            <h2 v-if="type === 'prev'" class="font-bold">{{ fetchPer }}%</h2>
+            <h2 v-if="type === 'average'" class="font-bold">{{ fetchAvg }}</h2>
+          </div>
+        </div>
         <p
           v-if="type === 'prev'"
           class="-mt-4 text-xl font-semibold text-tertiary-light"
@@ -34,12 +41,14 @@ import { mapGetters } from 'vuex'
 import CalenderSvg from '~/assets/svgs/calendar.svg?inline'
 import RisingSvg from '~/assets/svgs/trending-up.svg?inline'
 import FallingSvg from '~/assets/svgs/trending-down.svg?inline'
+import LoadingSvg from '~/assets/svgs/loading-1.svg?inline'
 
 export default {
   components: {
     CalenderSvg,
     RisingSvg,
     FallingSvg,
+    LoadingSvg,
   },
 
   props: {
@@ -52,6 +61,7 @@ export default {
     ...mapGetters({
       fetchPer: 'cases/fetchPer',
       fetchAvg: 'cases/fetchAvg',
+      fetchLoading: 'cases/fetchLoading',
     }),
 
     getNeg() {

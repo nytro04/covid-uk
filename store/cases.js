@@ -1,9 +1,8 @@
 export const state = () => ({
   casesPer: 0,
   average: 0,
-  weeklyCases: [],
-  weeklyDates: [],
-  newCases: {}
+  newCases: {},
+  loading: true
 })
 
 export const mutations = {
@@ -17,6 +16,10 @@ export const mutations = {
 
   SET_AVG(state, average) {
     state.average = average
+  },
+
+  SET_LOADING(state, loading) {
+    state.loading = loading
   }
 }
 export const actions = {
@@ -30,6 +33,10 @@ export const actions = {
 
   setAvg({ commit }, average) {
     commit('SET_AVG', average)
+  },
+
+  setLoading({ commit }, loading) {
+    commit('SET_LOADING', loading)
   }
 }
 export const getters = {
@@ -37,5 +44,7 @@ export const getters = {
 
   fetchPer: (state) => state.casesPer,
 
-  fetchAvg: (state) => state.average
+  fetchAvg: (state) => state.average,
+
+  fetchLoading: (state) => state.loading
 }

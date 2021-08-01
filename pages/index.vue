@@ -3,17 +3,26 @@
     <Hero />
     <StatsPage />
 
-    <div class="py-10 mx-auto mt-32 graph bg-primary-light">
-      <ChartLineBase :chart-data="chartData" options="options" :height="200" />
-      <div class="my-20 text-center">
-        <a
-          href="https://www.gov.uk/coronavirus"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn__white"
-        >
-          view in details
-        </a>
+    <div class="py-10 mt-32 bg-primary-light">
+      <div v-if="fetchLoading" class="py-10 mb-5 text-center">
+        <LoadingSvg />
+      </div>
+      <div v-else class="container mx-auto sm:px-10">
+        <ChartLineBase
+          :chart-data="chartData"
+          options="options"
+          :height="200"
+        />
+        <div class="my-20 text-center">
+          <a
+            href="https://www.gov.uk/coronavirus"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn__white"
+          >
+            view in details
+          </a>
+        </div>
       </div>
     </div>
 
@@ -22,13 +31,16 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+import LoadingSvg from '~/assets/svgs/loading.svg?inline'
+
 export default {
   components: {
     Hero: () => import('~/components/HeroPage.vue'),
     StatsPage: () => import('~/components/StatsPage.vue'),
     ChartLineBase: () => import('~/components/dashboard/ChartLineBase.vue'),
     PreventivePage: () => import('~/components/PreventivePage.vue'),
+    LoadingSvg,
   },
 
   data() {
@@ -54,6 +66,12 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters({
+      fetchLoading: 'cases/fetchLoading',
+    }),
+  },
+
   mounted() {
     this.fetchData()
   },
@@ -63,6 +81,7 @@ export default {
       setNewCases: 'cases/setNewCases',
       setPer: 'cases/setPer',
       setAvg: 'cases/setAvg',
+      setLoading: 'cases/setLoading',
     }),
 
     average(arr) {
@@ -73,6 +92,8 @@ export default {
         const res = await this.$axios.$get(
           `/data?filters=areaType=nation;areaName=england&structure={"date":"date","cumCasesByPublishDate":"cumCasesByPublishDate", "newCases":"newCasesByPublishDate"}`
         )
+
+        this.setLoading(false)
 
         const dayZero = res.data[0]
         const dayOne = res.data[1]
@@ -139,3 +160,5 @@ export default {
   },
 }
 </script>
+
+<style lang="scss"></style>

@@ -1,7 +1,6 @@
 <template>
   <div id="stats-page" class="container mx-auto mar-top mar-bottom">
     <div class="flex items-center justify-between">
-      <!-- <StatsCardBig :new-cases="newCases" /> -->
       <StatsCardBig />
       <div class="block space-y-12">
         <StatsCardSmall type="prev" />
