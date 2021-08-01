@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <div class="flex items-center justify-between text-primary-dark">
+    <div class="flex items-center justify-between text-primary-dark md:mx-8">
       <div class="mt-8">
         <AlertSvg class="-ml-2 md:ml-0 icon" />
-        <h4 class="text-xl font-semibold md:text-3xl">
+        <h4 class="text-xl font-semibold lg:text-3xl md:text-2xl">
           <span>Above</span>
           <br />
           <span class="md:-ml-2">average</span>
@@ -18,7 +18,7 @@
         </div>
         <h2 class="font-bold"></h2>
         <p
-          class="text-xl font-semibold md:-mt-8 md:text-3xl text-tertiary-light"
+          class="-mt-2 text-xl font-semibold  lg:-mt-8 md:-mt-3 lg:text-3xl md:text-2xl text-tertiary-light"
         >
           New Cases Yesterday
         </p>
@@ -67,6 +67,12 @@ export default {
   h2 {
     font-size: 6.25rem;
 
+    @include respond(tab-land) {
+    }
+    @include respond(tab-port) {
+      font-size: 3.5rem;
+    }
+
     @include respond(phone) {
       font-size: 3.25rem;
     }
@@ -74,6 +80,12 @@ export default {
 }
 
 .icon {
+  @include respond(tab-land) {
+    height: 3rem;
+  }
+  @include respond(tab-port) {
+  }
+
   @include respond(phone) {
     height: 3rem;
   }

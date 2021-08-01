@@ -8,7 +8,7 @@
         </span>
         <CalenderSvg v-if="type === 'average'" class="icon" />
       </div>
-      <div class="pt-8 ml-4 md:pl-10 pb-14">
+      <div class="pt-8 ml-4 lg:pl-10 md:pl-8 pb-14">
         <div>
           <div v-if="fetchLoading" class="mb-5 text-center">
             <LoadingSvg />
@@ -20,14 +20,14 @@
         </div>
         <p
           v-if="type === 'prev'"
-          class="text-base font-semibold md:text-xl text-tertiary-light"
+          class="text-base font-semibold  lg:text-xl md:text-lg text-tertiary-light"
         >
           <span v-if="getNeg === '-'">Decrease from previous day</span>
           <span v-else>Increase from previous day</span>
         </p>
         <p
           v-if="type === 'average'"
-          class="text-base font-semibold md:text-xl text-tertiary-light"
+          class="text-base font-semibold  lg:text-xl md:text-lg text-tertiary-light"
         >
           Average of last 7 days
         </p>
@@ -83,6 +83,11 @@ export default {
 
   h2 {
     font-size: 3.5rem;
+    @include respond(tab-land) {
+    }
+    @include respond(tab-port) {
+      font-size: 2.2rem;
+    }
 
     @include respond(phone) {
       font-size: 2rem;
@@ -91,6 +96,12 @@ export default {
 }
 
 .icon {
+  @include respond(tab-land) {
+    height: 3rem;
+  }
+  @include respond(tab-port) {
+  }
+
   @include respond(phone) {
     height: 3rem;
   }
